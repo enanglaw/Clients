@@ -1,0 +1,25 @@
+<template>
+  <required from='./toastr/build/toastr.min.css'></required>
+ 
+    <main role="main" class="col-md-6 ml-sm-auto col-lg-10 pt-3 px-4">
+    <ai-dialog>
+          <ai-dialog-header>
+              <h4>Delete Confirmation!</h4>
+          </ai-dialog-header>
+          <ai-dialog-body>
+                <div class="alert alert-danger">
+                      <h4>Are you sure you want to delete ${applicant.name} </h4>
+          </ai-dialog-body>
+          <ai-dialog-footer>
+            <form method="delete" >
+              <div>
+                <input class="btn btn-danger" type="submit" click.delegate="delete()" value="Delete" />
+                <button class="btn btn-primary" click.trigger = "cancel()">Cancel</button>
+              </div>
+             </form>
+             <br>
+          <!-- <button class="btn btn-danger" click.trigger = "controller.ok(message)">Delete</button> |
+           <button class="btn btn-primary" click.trigger = "controller.cancel()">Cancel</button>-->
+          </ai-dialog-footer>
+    </ai-dialog>
+</main> </template>

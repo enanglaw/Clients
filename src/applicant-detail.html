@@ -1,0 +1,39 @@
+<template>
+    <main role="main" class="col-md-6 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div class="applicants-table-wrapper">
+        <div class="table-responsive">
+         <div class="card"> 
+        <div class="card-header text-success bg-default">
+          <i class="fa fa-user"></i>
+           ${applicant.name} Details
+        </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+            ${applicant.name} ${applicant.familyName}
+          </li>
+          <li class="list-group-item">
+            ${applicant.emailAddress}
+          </li>
+          <li class="list-group-item">
+            ${applicant.address}
+          </li>
+          <li class="list-group-item">
+            ${applicant.countryofOrigin}
+          </li>
+          <li class="list-group-item">
+            ${applicant.age}
+          </li>
+          <li class="list-group-item">
+            ${applicant.hired}
+          </li>
+      </ul> 
+   </div>
+ </div>
+ </div>
+  <hr>
+  <div>
+    <a route-href="route:applicants" class="btn btn-success">All Applicants</a>
+  </div>
+</main>
+
+ </template>

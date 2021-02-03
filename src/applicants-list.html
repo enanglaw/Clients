@@ -1,0 +1,57 @@
+<template>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h1 class="h2">Dashboard</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button class="btn btn-sm btn-outline-secondary">Share</button>
+        </div>
+      </div>
+    </div>
+    <div class="applicants-table-wrapper">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>FullName</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Country</th>
+              <th>Hiring Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr repeat.for="applicant of applicants">
+              <td>${$index+1}</td>
+              <td>${applicant.name+' '+applicant.familyName}</td>
+              <td>${applicant.emailAddress}</td>
+              <td>${applicant.age}</td>
+              <td>${applicant.countryofOrigin}</td>
+              <td>${applicant.hired}</td>
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+                    <span class="ti ti-settings"></span>Manage
+                  </button>
+                  <div class="dropdown-menu">
+                    
+                    <a class="dropdown-item" route-href="route:detail; params.bind : {id:applicant.id}"> Detail</a>
+                    <a class="dropdown-item" click.trigger = "openUpdate() "  
+                    route-href="route: edit; params.bind :{id:applicant.id}">Update</a>
+                    <a class="dropdown-item" click.trigger = "openDelete() " 
+                    route-href="route: del; params.bind : { id:applicant.id}">Delete</a>
+                  </div>
+                </div>
+                
+              </td>
+            </tr>
+          </tbody>
+          <tfoot></tfoot>
+
+        </table>
+      </div>
+    </div>
+  </main>
+  </template>

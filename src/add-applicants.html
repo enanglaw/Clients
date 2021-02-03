@@ -1,0 +1,124 @@
+<template>
+  <required from="./styles"></required>
+  <required from='./toastr/build/toastr.min.css'></required>
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+   
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h2><i class="fa fa-user"></i>
+          Create ${applicant.name} Profile:</h2>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            
+          </div>
+        </div>
+      </div>
+      <div class="applicants-table-wrapper">
+        <div class="table-responsive">
+         <div class="card">
+        
+        <div class="card-body">
+          <form role="form" method="post" action="/applicants/add" submit.delegate = "save()"
+          validation-errors="errors.bind: applicantErrors; controller.bind: applicantValidationController" 
+          validation-renderer="applicant-renderer" >
+         
+            <div class=" row">
+              
+              <div class="col-md-6 col-sm-6 " validation-errors.bind="firstNameErrors"
+              class.bind="firstNameErrors.length ? 'has-error' : ''">
+                  <label for="name" class="col-form-label"><strong>First Name :</strong></label>
+                  <input type="text" id="name" placeholder="First Name" class="form-control"
+                   value.bind="applicant.name  & validateOnChange">
+                   <span id="name" repeat.for="errorInfo of firstNameErrors" 
+                   
+                   class="text-danger"> ${errorInfo.error.message}</span>
+              </div>
+          
+              <div class="col-md-6 col-sm-6"  validation-errors.bind="familyNameErrors"
+              class.bind="familyNameErrors.length ? 'has-error' : ''">
+                <label for="familyName" class="col-form-label"><strong>Family Name :</strong></label>
+                <input type="text" id="familyName" placeholder="Family Name" class="form-control"
+                 value.bind="applicant.familyName  & validateOnChange">
+                 <span id="familyName" repeat.for="errorInfo of familyNameErrors" 
+                   
+                 class="text-danger"> ${errorInfo.error.message}</span>
+            </div>
+             </div>
+             <div class=" row">
+                    <div class="col-md-12 col-sm-12" validation-errors.bind="emailAddressErrors"
+                     class.bind="emailAddressErrors.length ? 'has-error' : ''" >
+                        <label for="emailAddress" class="col-form-label"><strong>Email Address :</strong></label>
+                        <input type="text" id="emailAddress" placeholder="Email Address" class="form-control"
+                         value.bind="applicant.emailAddress  & validateOnChange">
+                         <span id="emailAddress" repeat.for="errorInfo of emailAddressErrors" 
+                   
+                         class="text-danger"> ${errorInfo.error.message}</span>
+                    </div>
+             </div>
+           <div class=" row">
+                   <div class="col-md-6 col-sm-6" validation-errors.bind="addressErrors"
+                   class.bind="addressErrors.length ? 'has-error' : ''" > 
+                      <label for="address" class="col-form-label"><strong>Address :</strong></label>
+                      <input type="text" id="address" placeholder="address" class="form-control" 
+                      value.bind="applicant.address  & validateOnChange">
+                      <span id="address" repeat.for="errorInfo of addressErrors" 
+                   
+                      class="text-danger"> ${errorInfo.error.message}</span>
+                   </div>
+                  <div class="col-md-6 col-sm-6" validation-errors.bind="countryErrors"
+                  class.bind="countryErrors.length ? 'has-error' : ''">
+                    <label for="countryofOrigin" class="col-form-label"><strong>Country of Origin :</strong></label>
+                    <input type="text" id="countryofOrigin" placeholder="country" class="form-control" 
+                    value.bind="applicant.countryofOrigin  & validateOnChange">
+                    <span id="countryofOrigin" repeat.for="errorInfo of countryErrors" 
+                   
+                    class="text-danger"> ${errorInfo.error.message}</span>
+                  </div>
+           </div>
+           <div class=" row">
+                <div class="col-md-3 col-sm-3">
+                      <label class="col-form-label"><strong>Is Hired :</strong> </label>
+                      <br>
+                      <div class="" >
+                        <label class="col-form-label">
+                          <input type="radio" class="fa fa-radio" name="group3"
+                                  model.bind="true" checked.bind="applicant.hired" checked.bind="applicant.hired  & validateOnChange">
+                          Yes
+                        </label>
+                        <label class="col-form-label">
+                          <input type="radio" name="group3"
+                                  model.bind="false" checked.bind="applicant.hired" checked.bind="applicant.hired  & validateOnChange">
+                          No
+                        </label>
+                      </div>
+                     
+                </div>
+                <div class="col-md-9 col-sm-9"  validation-errors.bind="ageErrors"
+                class.bind="ageErrors.length ? 'has-error' : ''">
+                    <label for="age" class="col-form-label"> <strong>Age :</strong></label>
+                    <input type="text" id="age" placeholder="Applicant Age" class="form-control" 
+                    value.bind="applicant.age  & validateOnChange">
+                    <span id="age" repeat.for="errorInfo of ageErrors" 
+                   
+                    class="text-danger"> ${errorInfo.error.message}</span>
+                </div>
+            </div>
+         
+          <hr>
+          
+        <div class="row">
+             <div class="col-md-4 col-sm-4">
+               
+            <input type="submit" class="btn btn-success float-left" disabled.bind="applicantErrors.length"  value="Save Applicant"/> 
+          
+             </div>
+        </div>
+         
+          
+      </form> 
+     </div>
+    </div>
+   </div>
+  </div>
+ </main>
+</template>
